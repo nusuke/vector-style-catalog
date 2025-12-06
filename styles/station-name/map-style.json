@@ -1,0 +1,90 @@
+{
+  "version": 8,
+  "name": "Empty Style",
+  "metadata": { "maputnik:renderer": "mbgljs" },
+  "sources": {
+    "gsi-base-map": {
+      "type": "raster",
+      "tiles": ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"],
+      "minzoom": 0,
+      "maxzoom": 22
+    },
+    "gsi-japan": {
+      "type": "vector",
+      "tiles": [
+        "https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap/{z}/{x}/{y}.pbf"
+      ],
+      "minZoom": 0,
+      "maxZoom": 14
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "basemap",
+      "type": "raster",
+      "source": "gsi-base-map",
+      "maxzoom": 13,
+      "filter": ["all"],
+      "layout": { "visibility": "visible" }
+    },
+    { "id": "background", "type": "background", "minzoom": 13 },
+    {
+      "id": "railway",
+      "type": "line",
+      "source": "gsi-japan",
+      "source-layer": "railway",
+      "layout": { "line-cap": "butt" },
+      "paint": {
+        "line-color": "rgba(215, 98, 255, 1)",
+        "line-width": 5,
+        "line-opacity": 0.8
+      }
+    },
+    {
+      "id": "road",
+      "type": "line",
+      "source": "gsi-japan",
+      "source-layer": "road",
+      "paint": { "line-color": "rgba(138, 129, 90, 1)", "line-width": 4 }
+    },
+    {
+      "id": "building",
+      "type": "fill-extrusion",
+      "source": "gsi-japan",
+      "source-layer": "building",
+      "paint": { "fill-extrusion-color": "rgba(58, 17, 17, 1)" }
+    },
+    {
+      "id": "water",
+      "type": "fill-extrusion",
+      "source": "gsi-japan",
+      "source-layer": "waterarea",
+      "paint": {
+        "fill-extrusion-color": "rgba(79, 175, 209, 1)",
+        "fill-extrusion-opacity": 0.3
+      }
+    },
+    {
+      "id": "label",
+      "type": "symbol",
+      "source": "gsi-japan",
+      "source-layer": "label",
+      "minzoom": 13,
+      "filter": ["all", ["==", "annoCtg", 422]],
+      "layout": {
+        "text-font": [
+          "Open Sans Regular",
+          "Arial Unicode MS Regular",
+          "Noto Sans Bold"
+        ],
+        "text-field": { "type": "identity", "property": "knj" },
+        "text-size": 28
+      },
+      "paint": { "text-color": "rgba(255, 255, 255, 1)" }
+    }
+  ],
+  "id": "656elci2q"
+}
+
