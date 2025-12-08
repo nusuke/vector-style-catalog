@@ -1,0 +1,16 @@
+{
+"name": "output",
+"description": "output",
+"version": "2",
+"minzoom": "0",
+"maxzoom": "14",
+"center": "139.691162,35.648369,14",
+"bounds": "139.171981,35.501151,139.917827,35.817509",
+"antimeridian_adjusted_bounds": "139.171981,35.501151,139.917827,35.817509",
+"type": "overlay",
+"strategies": "[{\"tiny_polygons\":10684},{\"tiny_polygons\":10684},{\"tiny_polygons\":10684},{\"tiny_polygons\":10679},{\"tiny_polygons\":10569},{\"tiny_polygons\":9662},{\"tiny_polygons\":6671},{\"tiny_polygons\":2625},{\"tiny_polygons\":573},{\"tiny_polygons\":128},{\"tiny_polygons\":64},{\"tiny_polygons\":32},{\"tiny_polygons\":20},{\"tiny_polygons\":11},{\"tiny_polygons\":7}]",
+"format": "pbf",
+"generator": "tippecanoe v2.79.0",
+"generator_options": "tippecanoe -e output -pC tokyo-yototiiki.geojson",
+"json": "{\"vector_layers\":[{\"id\":\"tokyoyototiiki\",\"description\":\"\",\"minzoom\":0,\"maxzoom\":14,\"fields\":{\"A29_001\":\"String\",\"A29_002\":\"String\",\"A29_004\":\"Number\",\"A29_005\":\"String\",\"A29_006\":\"Number\",\"A29_007\":\"Number\"}}],\"tilestats\":{\"layerCount\":1,\"layers\":[{\"layer\":\"tokyoyototiiki\",\"count\":10684,\"geometry\":\"Polygon\",\"attributeCount\":6,\"attributes\":[{\"attribute\":\"A29_001\",\"count\":1,\"type\":\"string\",\"values\":[\"13000\"]},{\"attribute\":\"A29_002\",\"count\":1,\"type\":\"string\",\"values\":[\"東京都\"]},{\"attribute\":\"A29_004\",\"count\":12,\"type\":\"number\",\"values\":[1,10,11,12,2,3,4,5,6,7,8,9],\"min\":1,\"max\":12},{\"attribute\":\"A29_005\",\"count\":12,\"type\":\"string\",\"values\":[\"商業地域\",\"工業地域\",\"工業専用地域\",\"準住居地域\",\"準工業地域\",\"第一種中高層住居専用地域\",\"第一種低層住居専用地域\",\"第一種住居地域\",\"第二種中高層住居専用地域\",\"第二種低層住居専用地域\",\"第二種住居地域\",\"近隣商業地域\"]},{\"attribute\":\"A29_006\",\"count\":5,\"type\":\"number\",\"values\":[30,40,50,60,80],\"min\":30,\"max\":80},{\"attribute\":\"A29_007\",\"count\":16,\"type\":\"number\",\"values\":[100,1000,1200,1300,150,200,300,400,50,500,60,600,700,80,800,900],\"min\":50,\"max\":1300}]}]}}"
+}
