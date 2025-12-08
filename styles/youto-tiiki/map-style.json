@@ -1,0 +1,196 @@
+{
+  "version": 8,
+  "name": "Empty Style",
+  "metadata": {"maputnik:renderer": "mbgljs"},
+  "sources": {
+    "gsi-base-map": {
+      "type": "raster",
+      "tiles": ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"],
+      "minzoom": 0,
+      "maxzoom": 22
+    },
+    "gsi-japan": {
+      "type": "vector",
+      "tiles": [
+        "https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap/{z}/{x}/{y}.pbf"
+      ],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "voronoi": {
+      "type": "geojson",
+      "data": "https://nusuke.github.io/vector-style-catalog/tokyo-station-voronoi.geojson"
+    },
+    "station-point": {
+      "type": "geojson",
+      "data": "https://nusuke.github.io/vector-style-catalog/tokyo-station-point.geojson"
+    },
+    "yototiiki": {
+      "type": "vector",
+      "tiles": [
+        "https://nusuke.github.io/vector-style-catalog/yototiikipbf/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 0,
+      "maxzoom": 14,
+      "scheme": "xyz"
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "basemap",
+      "type": "raster",
+      "source": "gsi-base-map",
+      "maxzoom": 13,
+      "filter": ["all"],
+      "layout": {"visibility": "visible"}
+    },
+    {
+      "id": "background",
+      "type": "background",
+      "minzoom": 0,
+      "layout": {"visibility": "none"},
+      "paint": {"background-color": "rgba(36, 33, 33, 1)"}
+    },
+    {
+      "id": "用途地域",
+      "type": "fill",
+      "source": "yototiiki",
+      "source-layer": "tokyoyototiiki",
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-color": [
+          "match",
+          ["get", "A29_004"],
+          1,
+          "#0d4d00",
+          2,
+          "#167300",
+          3,
+          "#1f9900",
+          4,
+          "#28bf00",
+          5,
+          "#32d631",
+          6,
+          "#5fea5f",
+          7,
+          "#8cf48c",
+          21,
+          "#4fbf4f",
+          8,
+          "#ffd1e6",
+          9,
+          "#ffb3d9",
+          10,
+          "#fff2a8",
+          11,
+          "#ffea55",
+          12,
+          "#ffd700",
+          99,
+          "#cccccc",
+          "#eeeeee"
+        ],
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "road",
+      "type": "line",
+      "source": "gsi-japan",
+      "source-layer": "road",
+      "minzoom": 9,
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "line-color": "rgba(138, 129, 90, 1)",
+        "line-width": 4,
+        "line-opacity": 0.2
+      }
+    },
+    {
+      "id": "railway",
+      "type": "line",
+      "source": "gsi-japan",
+      "source-layer": "railway",
+      "layout": {
+        "line-cap": "butt",
+        "visibility": "visible",
+        "line-join": "miter"
+      },
+      "paint": {
+        "line-color": "rgba(255, 120, 24, 1)",
+        "line-width": 3,
+        "line-opacity": 0.7
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill-extrusion",
+      "source": "gsi-japan",
+      "source-layer": "building",
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-extrusion-color": "rgba(248, 205, 205, 1)"}
+    },
+    {
+      "id": "water",
+      "type": "fill-extrusion",
+      "source": "gsi-japan",
+      "source-layer": "waterarea",
+      "paint": {
+        "fill-extrusion-color": "rgba(79, 175, 209, 1)",
+        "fill-extrusion-opacity": 0.3
+      }
+    },
+    {
+      "id": "station-point",
+      "type": "circle",
+      "source": "station-point",
+      "paint": {"circle-color": "rgba(255, 0, 0, 1)", "circle-radius": 10}
+    },
+    {
+      "id": "voronoi",
+      "type": "line",
+      "source": "voronoi",
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "line-color": "rgba(254, 0, 0, 1)",
+        "line-blur": 4,
+        "line-width": 4
+      }
+    },
+    {
+      "id": "駅名ラベル",
+      "type": "symbol",
+      "source": "gsi-japan",
+      "source-layer": "label",
+      "minzoom": 7,
+      "maxzoom": 24,
+      "filter": ["all", ["==", "annoCtg", 422]],
+      "layout": {
+        "text-font": [
+          "Open Sans Regular",
+          "Arial Unicode MS Regular",
+          "Noto Sans Bold"
+        ],
+        "text-field": {"type": "identity", "property": "knj"},
+        "text-anchor": "top",
+        "visibility": "visible",
+        "symbol-placement": "point",
+        "text-size": 15,
+        "text-justify": "center"
+      },
+      "paint": {"text-color": "rgba(255, 0, 0, 1)"}
+    },
+    {
+      "id": "用途地域ラベル",
+      "type": "symbol",
+      "source": "yototiiki",
+      "source-layer": "tokyoyototiiki",
+      "minzoom": 14,
+      "layout": {"text-field": {"type": "identity", "property": "A29_005"}}
+    }
+  ],
+  "id": "656elci2q"
+}
