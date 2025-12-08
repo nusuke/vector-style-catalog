@@ -1,0 +1,13 @@
+<div id="map"
+style="width: 100vw; height: 100vh;"
+></div>
+<script src="https://unpkg.com/maplibre-gl@5.14.0/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@5.14.0/dist/maplibre-gl.css" rel="stylesheet" />
+<script>
+    var map = new maplibregl.Map({
+        container: 'map', 
+        style: './styles/map-style.json', // style URL
+        center: [135, 35], // starting position [lng, lat]
+        zoom: 6 // starting zoom
+    });
+</script>
