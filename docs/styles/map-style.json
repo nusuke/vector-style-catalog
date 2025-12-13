@@ -17,18 +17,14 @@
       "minZoom": 0,
       "maxZoom": 14
     },
-    "voronoi": {
-      "type": "geojson",
-      "data": "https://nusuke.github.io/vector-style-catalog/tokyo-station-voronoi.geojson"
-    },
     "station-point": {
       "type": "geojson",
       "data": "https://nusuke.github.io/vector-style-catalog/tokyo-station-point.geojson"
     },
-    "yototiiki": {
+    "mypbf": {
       "type": "vector",
       "tiles": [
-        "https://nusuke.github.io/vector-style-catalog/yototiikipbf/{z}/{x}/{y}.pbf"
+        "https://nusuke.github.io/vector-style-catalog/pbf/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 0,
       "maxzoom": 14,
@@ -44,19 +40,22 @@
       "source": "gsi-base-map",
       "maxzoom": 13,
       "filter": ["all"],
-      "layout": {"visibility": "visible"}
+      "layout": {"visibility": "none"}
     },
     {
       "id": "background",
       "type": "background",
       "minzoom": 0,
       "layout": {"visibility": "none"},
-      "paint": {"background-color": "rgba(36, 33, 33, 1)"}
+      "paint": {
+        "background-color": "rgba(36, 33, 33, 1)",
+        "background-opacity": 0.3
+      }
     },
     {
       "id": "用途地域",
       "type": "fill",
-      "source": "yototiiki",
+      "source": "mypbf",
       "source-layer": "tokyoyototiiki",
       "layout": {"visibility": "visible"},
       "paint": {
@@ -110,6 +109,14 @@
       }
     },
     {
+      "id": "building",
+      "type": "fill-extrusion",
+      "source": "gsi-japan",
+      "source-layer": "building",
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-extrusion-color": "rgba(248, 205, 205, 1)"}
+    },
+    {
       "id": "railway",
       "type": "line",
       "source": "gsi-japan",
@@ -126,14 +133,6 @@
       }
     },
     {
-      "id": "building",
-      "type": "fill-extrusion",
-      "source": "gsi-japan",
-      "source-layer": "building",
-      "layout": {"visibility": "visible"},
-      "paint": {"fill-extrusion-color": "rgba(248, 205, 205, 1)"}
-    },
-    {
       "id": "water",
       "type": "fill-extrusion",
       "source": "gsi-japan",
@@ -147,15 +146,20 @@
       "id": "station-point",
       "type": "circle",
       "source": "station-point",
-      "paint": {"circle-color": "rgba(255, 0, 0, 1)", "circle-radius": 10}
+      "paint": {
+        "circle-color": "rgba(255, 0, 0, 1)",
+        "circle-blur": 1,
+        "circle-radius": 18
+      }
     },
     {
       "id": "voronoi",
       "type": "line",
-      "source": "voronoi",
+      "source": "mypbf",
+      "source-layer": "tokyostationvoronoi",
       "layout": {"visibility": "visible"},
       "paint": {
-        "line-color": "rgba(254, 0, 0, 1)",
+        "line-color": "rgba(139, 65, 65, 1)",
         "line-blur": 4,
         "line-width": 4
       }
@@ -186,10 +190,11 @@
     {
       "id": "用途地域ラベル",
       "type": "symbol",
-      "source": "yototiiki",
+      "source": "mypbf",
       "source-layer": "tokyoyototiiki",
       "minzoom": 14,
-      "layout": {"text-field": {"type": "identity", "property": "A29_005"}}
+      "layout": {"text-field": {"type": "identity", "property": "A29_005"}},
+      "paint": {"text-color": "#0b3d0b"}
     }
   ],
   "id": "656elci2q"
